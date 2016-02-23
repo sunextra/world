@@ -14,8 +14,9 @@ public class Boot {
 
     static void setArgs(String[] args){
         for(int i=0; i<args.length; i++){
-            if("--world.port".equals(args[i])){
-                port = Integer.parseInt(args[i]);
+            String[] argValue = args[i].split("=");
+            if("--world.port".equals(argValue[0])){
+                port = Integer.parseInt(argValue[1]);
             }
         }
     }
