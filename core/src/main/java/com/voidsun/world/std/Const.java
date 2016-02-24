@@ -5,4 +5,5 @@ package com.voidsun.world.std;
  */
 public class Const {
     public static final String EOF = "\r\n";
+
 }

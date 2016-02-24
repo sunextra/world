@@ -1,5 +1,6 @@
 package com.voidsun.world.core;
 
+import com.voidsun.world.config.WorldXmlConfiguration;
 import com.voidsun.world.std.CommonUtil;
 import com.voidsun.world.std.Const;
 
@@ -28,6 +29,7 @@ public class SocketServer extends Server {
     void start() {
         Socket socket;
         ServerSocket server;
+        new WorldXmlConfiguration().load();
         ExecutorService service = Executors.newFixedThreadPool(10);
         try {
             server = new ServerSocket(getPort());
