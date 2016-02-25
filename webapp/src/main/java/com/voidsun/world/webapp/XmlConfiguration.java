@@ -1,4 +1,4 @@
-package com.voidsun.world.config;
+package com.voidsun.world.webapp;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * Created by voidsun on 16/2/24.
  */
 public abstract class XmlConfiguration extends DefaultHandler{
-    abstract void load();
+    public abstract void load();
     LinkedList<String> domPath = new LinkedList<>();
 
     @Override

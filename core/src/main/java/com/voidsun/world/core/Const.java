@@ -1,4 +1,4 @@
-package com.voidsun.world.std;
+package com.voidsun.world.core;
 
 /**
  * Created by voidsun on 16/2/23.

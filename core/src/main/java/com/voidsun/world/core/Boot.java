@@ -9,7 +9,8 @@ public class Boot {
 
     public static void main(String[] args) {
         if(args != null)setArgs(args);
-        new SocketServer(port).start();
+        Server server = new SocketServer(port);
+        server.start();
     }
 
     static void setArgs(String[] args){

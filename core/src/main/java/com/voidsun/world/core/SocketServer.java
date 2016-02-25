@@ -1,12 +1,14 @@
 package com.voidsun.world.core;
 
-import com.voidsun.world.config.WorldXmlConfiguration;
+import com.voidsun.world.webapp.WorldXmlConfiguration;
+import com.voidsun.world.webapp.XmlConfiguration;
 import com.voidsun.world.std.CommonUtil;
-import com.voidsun.world.std.Const;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,6 +17,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by voidsun on 16/2/22.
  */
 public class SocketServer extends Server {
+    private final List<XmlConfiguration> configList = new ArrayList<>();
+
+
     static AtomicInteger count = new AtomicInteger();
     static String response =
             "HTTP/1.1 200 OK\r\n" +
@@ -26,10 +31,20 @@ public class SocketServer extends Server {
     }
 
     @Override
-    void start() {
+    protected void preStart() {
+        configList.add(WorldXmlConfiguration.instance());
+        configList.stream().forEach(XmlConfiguration::load);
+    }
+
+    @Override
+    protected void postStart() {
+
+    }
+
+    @Override
+    protected void doStart() {
         Socket socket;
         ServerSocket server;
-        new WorldXmlConfiguration().load();
         ExecutorService service = Executors.newFixedThreadPool(10);
         try {
             server = new ServerSocket(getPort());

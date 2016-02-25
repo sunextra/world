@@ -5,7 +5,14 @@ package com.voidsun.world.core;
  */
 public abstract class Server {
     final private int port;
-    abstract void start();
+    abstract protected void preStart();
+    abstract protected void postStart();
+    abstract protected void doStart();
+    void start(){
+        preStart();
+        doStart();
+        postStart();
+    }
     protected int getPort(){
         return this.port;
     }

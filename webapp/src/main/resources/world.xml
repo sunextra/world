@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<world>
+    <deploy
+        path="/Users/voidsun/dev/java/jetty.project/learn/target/learn">
+    </deploy>
+</world>
